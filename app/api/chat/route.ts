@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
   // Initialize a text-generation stream using the Hugging Face Inference SDK
   const response = await Hf.textGenerationStream({
-    model: "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
+    model: "mistralai/Mistral-7B-Instruct-v0.1",
     inputs: experimental_buildOpenAssistantPrompt(messages),
     parameters: {
       max_new_tokens: 200,
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       typical_p: 0.2,
       repetition_penalty: 1,
       truncate: 1000,
-      return_full_text: false,
+      return_full_text: true,
     },
   });
 
