@@ -20,9 +20,10 @@ export async function POST(req: Request) {
       max_new_tokens: 200,
       // @ts-ignore (this is a valid parameter specifically in OpenAssistant models)
       typical_p: 0.2,
+      temperature: 0.8,
       repetition_penalty: 1,
       truncate: 1000,
-      return_full_text: true,
+      return_full_text: false,
     },
   });
 
