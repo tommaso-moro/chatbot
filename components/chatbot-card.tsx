@@ -70,8 +70,8 @@ export default function ChatbotCard() {
               </div>
             ))
           ) : (
-            <div className="flex flex-col h-full items-center justify-center text-muted-foreground font-normal">
-              <Icons.braces className="h-5.5 w-5.5 mb-6" />
+            <div className="flex flex-col h-full items-center justify-center text-muted-foreground font-light">
+              <Icons.braces className="h-5 w-5 mb-6" />
               No messages yet. Send a message to start a conversation!
             </div>
           )}
