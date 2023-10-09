@@ -30,7 +30,7 @@ export default function ChatbotCard() {
   }, [messages]);
 
   return (
-    <Card className=" w-full ">
+    <Card className=" w-full h-11/12">
       <CardHeader>
         <CardTitle className="flex items-center justify-between w-100 text-lg">
           Chatbot
@@ -43,7 +43,7 @@ export default function ChatbotCard() {
           </div>
         </CardTitle>
         <CardDescription>
-          A simple interface to chat with your favorite LLM. Made by{" "}
+          A simple interface to chat with Mistral 7B. Made by{" "}
           <Link
             href="https://www.tmoro.xyz"
             target="_blank"
@@ -55,13 +55,13 @@ export default function ChatbotCard() {
       </CardHeader>
       <Separator />
       <CardContent
-        className="h-[800px] overflow-auto"
+        className="h-[70vh] overflow-auto"
         ref={cardContentRef} // Add the ref to CardContent
       >
         <div className="p-6 w-full h-full">
           {messages.length > 0 ? (
             messages.map((m) => (
-              <div key={m.id} className="grid grid-cols-12 mt-2">
+              <div key={m.id} className="grid grid-cols-12 mt-2 space-x-4">
                 <div className=" col-span-1">
                   <span className=" font-semibold ">
                     {m.role === "user" ? "You: " : "AI: "}
@@ -77,6 +77,7 @@ export default function ChatbotCard() {
               No messages yet. Send a message to start a conversation!
             </div>
           )}
+          <div className="h-4"></div>
         </div>
       </CardContent>
       <Separator />
