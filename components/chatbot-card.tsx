@@ -16,6 +16,8 @@ import { useEffect, useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Icons } from "@/components/icons";
 import StyledLink from "./styled-link";
+import Link from "next/link";
+import { LINKS } from "@/lib/utils";
 
 export default function ChatbotCard() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
@@ -36,7 +38,9 @@ export default function ChatbotCard() {
           Chatbot
           <div className="flex flex-row items-center">
             <Button variant="ghost" size="sm">
-              <Icons.github className="h-5 w-5 font-black" />
+              <Link href={LINKS.GITHUB}>
+                <Icons.github className="h-5 w-5 font-black" />
+              </Link>
             </Button>
 
             <ThemeToggle />
@@ -44,11 +48,7 @@ export default function ChatbotCard() {
         </CardTitle>
         <CardDescription>
           A simple interface to chat with{" "}
-          <StyledLink
-            href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1"
-            text="Mistral 7B"
-            newTab={true}
-          />
+          <StyledLink href={LINKS.MISTRAL_7B} text="Mistral 7B" newTab={true} />
         </CardDescription>
       </CardHeader>
       <Separator />
