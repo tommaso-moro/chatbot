@@ -58,24 +58,26 @@ export default function ChatbotCard() {
         className="h-[800px] overflow-auto"
         ref={cardContentRef} // Add the ref to CardContent
       >
-        {messages.length > 0 ? (
-          messages.map((m) => (
-            <div key={m.id} className="grid grid-cols-12 mt-2">
-              <div className=" col-span-1">
-                <span className=" font-semibold ">
-                  {m.role === "user" ? "You: " : "AI: "}
-                </span>
-              </div>
+        <div className="p-6 w-full h-full">
+          {messages.length > 0 ? (
+            messages.map((m) => (
+              <div key={m.id} className="grid grid-cols-12 mt-2">
+                <div className=" col-span-1">
+                  <span className=" font-semibold ">
+                    {m.role === "user" ? "You: " : "AI: "}
+                  </span>
+                </div>
 
-              <div className=" col-span-11">{m.content}</div>
+                <div className=" col-span-11">{m.content}</div>
+              </div>
+            ))
+          ) : (
+            <div className="flex flex-col h-full items-center justify-center text-muted-foreground">
+              <Icons.braces className="h-6 w-6 mb-2" />
+              No messages yet. Send a message to start a conversation!
             </div>
-          ))
-        ) : (
-          <div className="flex flex-col h-full items-center justify-center text-muted-foreground">
-            <Icons.braces className="h-6 w-6 mb-2" />
-            No messages yet. Send a message to start a conversation!
-          </div>
-        )}
+          )}
+        </div>
       </CardContent>
       <Separator />
       <CardFooter className="pt-6">
