@@ -9,8 +9,17 @@ const Hf = new HfInference(process.env.NEXT_PUBLIC_HUGGING_FACE_API_KEY);
 export const runtime = "edge";
 
 export async function POST(req: Request) {
-  // Extract the `messages` from the body of the request
   const { messages } = await req.json();
+
+  // format messages as per docs: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1)
+  for (var i = 0; i < messages.length; i++) {
+    if (messages[i].role === "user") {
+      messages[i].content =
+        (i === 0 ? "<s>" : "") + `[INST] ${messages[i].content} [/INST]`;
+    } else if (messages[i].role === "assistant") {
+      messages[i].content = `${messages[i].content}</s>`;
+    }
+  }
 
   // Initialize a text-generation stream using the Hugging Face Inference SDK
   const response = await Hf.textGenerationStream({
@@ -19,10 +28,12 @@ export async function POST(req: Request) {
     parameters: {
       max_new_tokens: 200,
       // @ts-ignore (this is a valid parameter specifically in OpenAssistant models)
-      typical_p: 0.2,
+      // typical_p: 0.2,
       temperature: 0.8,
       repetition_penalty: 1,
       truncate: 1000,
+      //@ts-ignore
+      //stop: ["<"], // required for Mistral models
       return_full_text: false,
     },
   });
