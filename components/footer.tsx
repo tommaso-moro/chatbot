@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { LINKS, cn } from "@/lib/utils";
 import StyledLink from "./styled-link";
 
 export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
@@ -11,24 +11,11 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
           👋
           <p className="text-center text-sm leading-loose md:text-left">
             Built by{" "}
-            <StyledLink
-              href={"https://www.tmoro.xyz"}
-              text={"tmoro"}
-              newTab={true}
-            />
-            . Hosted on{" "}
-            <StyledLink
-              href={"https://vercel.com"}
-              text={"Vercel"}
-              newTab={true}
-            />
-            . The source code is available on{" "}
-            <StyledLink
-              href={"https://github.com/tommaso-moro/chatbot"}
-              text={"GitHub"}
-              newTab={true}
-            />
-            .
+            <StyledLink href={LINKS.TMORO} text={"tmoro"} newTab={true} />.
+            Hosted on{" "}
+            <StyledLink href={LINKS.VERCEL} text={"Vercel"} newTab={true} />.
+            The source code is available on{" "}
+            <StyledLink href={LINKS.GITHUB} text={"GitHub"} newTab={true} />.
           </p>
         </div>
       </div>
