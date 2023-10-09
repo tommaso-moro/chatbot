@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { useEffect, useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Icons } from "@/components/icons";
-import Link from "next/link";
+import StyledLink from "./styled-link";
 
 export default function ChatbotCard() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
@@ -43,14 +43,12 @@ export default function ChatbotCard() {
           </div>
         </CardTitle>
         <CardDescription>
-          A simple interface to chat with Mistral 7B. Made by{" "}
-          <Link
-            href="https://www.tmoro.xyz"
-            target="_blank"
-            className="underline underline-offset-4 decoration-slate-300 hover:decoration-[#6b7280]"
-          >
-            tmoro
-          </Link>
+          A simple interface to chat with{" "}
+          <StyledLink
+            href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1"
+            text="Mistral 7B"
+            newTab={true}
+          />
         </CardDescription>
       </CardHeader>
       <Separator />
@@ -72,8 +70,8 @@ export default function ChatbotCard() {
               </div>
             ))
           ) : (
-            <div className="flex flex-col h-full items-center justify-center text-muted-foreground">
-              <Icons.braces className="h-6 w-6 mb-2" />
+            <div className="flex flex-col h-full items-center justify-center text-muted-foreground text-md">
+              <Icons.braces className="h-5.5 w-5.5 mb-2" />
               No messages yet. Send a message to start a conversation!
             </div>
           )}
